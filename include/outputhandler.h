@@ -1,5 +1,5 @@
-#ifndef CIPHER_H
-#define CIPHER_H
+#ifndef OUTPUTHANDLER_H
+#define OUTPUTHANDLER_H
 
 #include <string>
 #include <vector>
@@ -7,7 +7,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
-class Cipher
+class OutputHandler
 {
     public:
     int foo {0};

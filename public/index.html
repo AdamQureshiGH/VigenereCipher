@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vigenère Cipher</title>
+</head>
+<body>
+    <h1>Vigenère Cipher Encryption/Decryption</h1>
+
+    <label for="text">Text (Plaintext or Ciphertext):</label>
+    <input type="text" id="text" required>
+    <br>
+
+    <label for="key">Key:</label>
+    <input type="text" id="key" required>
+    <br>
+
+    <button onclick="encrypt()">Encrypt</button>
+    <button onclick="decrypt()">Decrypt</button>
+
+    <h2>Result:</h2>
+    <p id="result"></p>
+
+    <script>
+        function encrypt() {
+            const text = document.getElementById('text').value;
+            const key = document.getElementById('key').value;
+
+            fetch('http://localhost:8080/encrypt', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `plaintext=${encodeURIComponent(text)}&key=${encodeURIComponent(key)}`,
+            })
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('result').innerText = data;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function decrypt() {
+            const text = document.getElementById('text').value;
+            const key = document.getElementById('key').value;
+
+            fetch('http://localhost:8080/decrypt', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `ciphertext=${encodeURIComponent(text)}&key=${encodeURIComponent(key)}`,
+            })
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('result').innerText = data;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
