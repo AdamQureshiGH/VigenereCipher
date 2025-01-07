@@ -53,6 +53,7 @@
         httplib::Server svr;
         // Route for encryption requests
         //It tells the server: "If someone sends a POST request to /encrypt, I want you to call the handleEncryptRequest function."
+        svr.set_mount_point("/", "./public");
         svr.Get("/", serveHTML);
 
         svr.Post("/encrypt", handleEncryptRequest);
