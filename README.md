@@ -1,2 +1,2 @@
 # VigenereCipher
-This is the VigenereCipher I made for fun in October of 2024
+This is the VigenereCipher I made for fun in December of 2024

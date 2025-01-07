@@ -17,9 +17,7 @@ class Cipher
     std::string cipheredText;
     public:
     virtual ~Cipher() 
-    {
-
-    }
+    {}
 
     virtual std::string Encrypt(std::string plainText, std::string key) = 0;
     virtual std::string Decrypt(std::string cipheredText, std::string key) = 0;
